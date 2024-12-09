@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CategoryService } from './api/category.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+	selector: 'app-root',
+	standalone: true,
+	imports: [RouterOutlet],
+	providers: [
+		BsModalService
+	],
+	templateUrl: './app.component.html',
+	styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  category: any = {};
-
+	category: any = {};
 	constructor(
-		private categoryService: CategoryService
+		private categoryService: CategoryService,
+		private modalService: BsModalService
 	) { }
 	ngOnInit() {
 		this.categoryService.getData().subscribe({
@@ -24,5 +28,11 @@ export class AppComponent {
 				console.log(error);
 			}
 		});
+	}
+	showModal(myModal: TemplateRef<any>): void {
+		this.modalService.show(myModal);
+	}
+	closeModal(): void {
+		this.modalService.hide();
 	}
 }
