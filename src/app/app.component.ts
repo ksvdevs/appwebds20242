@@ -15,24 +15,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 })
 export class AppComponent {
 	category: any = {};
-	constructor(
-		private categoryService: CategoryService,
-		private modalService: BsModalService
-	) { }
-	ngOnInit() {
-		this.categoryService.getData().subscribe({
-			next: (response: any) => {
-				this.category = response;
-			},
-			error: (error: any) => {
-				console.log(error);
-			}
-		});
-	}
-	showModal(myModal: TemplateRef<any>): void {
-		this.modalService.show(myModal);
-	}
-	closeModal(): void {
-		this.modalService.hide();
-	}
+	constructor() { }
+	ngOnInit() {}
 }
