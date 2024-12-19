@@ -9,20 +9,16 @@
                     <tr>
                         <th>NOMBRE</th>
                         <th>DESCRIPCION</th>
-                        <th>ESTADO</th>
+                        <th>ACCION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{{category.name}}</td>
-                        <td>{{category.description}}</td>
-                        <td>{{category.status}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{category.name}}</td>
-                        <td>{{category.description}}</td>
-                        <td>{{category.status}}</td>
-                    </tr>
+                    <tr *ngFor="let item of listCategory">
+						<td>{{item.name}}</td>
+						<td>{{item.description}}</td>
+						<td>{{item.state}}</td>
+						<td><button class="btn btn-xs btn-danger" (click)="delete(item.idcategory)">Eliminar</button></td>
+					</tr>
                 </tbody>
             </table>
         </div>
