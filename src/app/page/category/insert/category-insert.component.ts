@@ -20,7 +20,7 @@ export class CategoryInsertComponent {
   get nameFb() { return this.frmCategoryInsert.controls['name']; }
   get descriptionFb() { return this.frmCategoryInsert.controls['description']; }
   get stateFb() { return this.frmCategoryInsert.controls['state']; }
- 
+
   constructor(
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,

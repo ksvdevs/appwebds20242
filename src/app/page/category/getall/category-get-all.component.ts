@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CategoryGetAllComponent {
 	listCategory: any[] = [];
-
+	
 	constructor(
 		private categoryService: CategoryService
 	) {}
@@ -22,6 +22,7 @@ export class CategoryGetAllComponent {
 		this.categoryService.getAll().subscribe({
 			next: (response: any) => {
 				this.listCategory = response.dto.listCategory;
+				console.log(this.listCategory);
 			},
 			error: (error: any) => {
 				console.log(error);
