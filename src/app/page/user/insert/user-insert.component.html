@@ -1,0 +1,39 @@
+<app-notify [type]="typeResponse" [listMessage]="listMessageResponse"></app-notify>
+<div class="card">
+    <div class="card-header">
+        <h5>Registrar persona</h5>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="frmUserLogin">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="nameUser" class="form-label">nameUser</label>
+                    <input type="text" formControlName="nameUser" class="form-control" id="nameUser"
+                        placeholder="Obligatorio">
+                    <div *ngIf="(nameUserFb.touched || nameUserFb.dirty) && nameUserFb.errors && nameUserFb.hasError('required')"
+                        class="divError">Este campo es requerido.</div>
+                    <div *ngIf="(nameUserFb.touched || nameUserFb.dirty) && nameUserFb.errors && nameUserFb.hasError('pattern')"
+                        class="divError">Formato incorrecto.</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" formControlName="password" class="form-control" id="password"
+                        placeholder="Obligatorio">
+                    <div *ngIf="(passwordFb.touched || passwordFb.dirty) && passwordFb.errors && passwordFb.hasError('required')"
+                        class="divError">Este campo es requerido.</div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="passwordRetype" class="form-label">Repita contraseña</label>
+                    <input type="password" formControlName="passwordRetype" class="form-control" id="passwordRetype"
+                        placeholder="Obligatorio">
+                    <div *ngIf="(passwordFb.touched || passwordRetypeFb.touched || passwordFb.dirty || passwordRetypeFb.dirty) && diffPassword()"
+                        class="divError">Las contraseñas no coinciden.</div>
+                </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary" (click)="save()">Registrar datos</button>
+            </div>
+        </form>
+    </div>
+</div>

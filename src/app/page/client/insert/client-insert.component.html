@@ -1,0 +1,83 @@
+<div class="container" style="margin-top: 7px;">
+	<app-notify [type]="typeResponse" [listMessage]="listMessageResponse"></app-notify>
+	<div class="card">
+		<div class="card-header">
+			<h5>Registrar cliente</h5>
+		</div>
+		<div class="card-body">
+			<form [formGroup]="frmClientInsert">
+				<div class="row">
+					<div class="col-md-3 mb-3">
+						<label for="firstName" class="form-label">Nombre</label>
+						<input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="Obligatorio">
+						<div *ngIf="(firstNameFb.touched || firstNameFb.dirty) && firstNameFb.errors && firstNameFb.hasError('required')" class="divError">Este campo es requerido.</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="surName" class="form-label">Apellido</label>
+						<input type="text" formControlName="surName" class="form-control" id="surName"
+							placeholder="Obligatorio">
+						<div *ngIf="(surnameFb.touched || surnameFb.dirty) && surnameFb.errors && surnameFb.hasError('required')"
+							class="divError">Este campo es requerido.</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="dni" class="form-label">Dni</label>
+						<input type="text" formControlName="dni" class="form-control" id="dni"
+							placeholder="Obligatorio">
+						<div *ngIf="(dniFb.touched || dniFb.dirty) && dniFb.errors && dniFb.hasError('required')"
+							class="divError">Este campo es requerido.</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="gender" class="form-label">Genero</label>
+						<select formControlName="gender" class="form-select" id="gender">
+							<option value="1">Femenino</option>
+							<option value="0">Masculino</option>
+						</select>
+						<div *ngIf="(genderFb.touched || genderFb.dirty) && genderFb.errors && genderFb.hasError('required')"
+							class="divError">Este campo es requerido.</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="phone" class="form-label">Telefono</label>
+						<input type="text" formControlName="phone" class="form-control" id="phone"
+							placeholder="Obligatorio">
+						<div *ngIf="(phoneFb.touched || phoneFb.dirty) && phoneFb.errors && phoneFb.hasError('required')"
+							class="divError">Este campo es requerido.</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="address" class="form-label">Direccion</label>
+						<input type="text" formControlName="address" class="form-control" id="address"
+							placeholder="Obligatorio">
+						<div *ngIf="(addressFb.touched || addressFb.dirty) && addressFb.errors && addressFb.hasError('required')"
+							class="divError">Este campo es requerido.</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="birthDate" class="form-label">Fecha</label>
+						<input 
+							type="date" 
+							formControlName="birthDate" 
+							class="form-control" 
+							id="birthDate"
+							[placeholder]="'Obligatorio'" 
+						>
+						<div 
+							*ngIf="(birthDateFb.touched || birthDateFb.dirty) && birthDateFb.errors && birthDateFb.hasError('required')" 
+							class="divError"
+						>
+							Este campo es requerido.
+						</div>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="email" class="form-label">Correo</label>
+						<input type="text" formControlName="email" class="form-control" id="email"
+							placeholder="Obligatorio">
+						<div *ngIf="(emailFb.touched || emailFb.dirty) && emailFb.errors && emailFb.hasError('required')"
+							class="divError">Este campo es requerido.</div>
+					</div>
+				</div>
+				<hr>
+				<div class="d-flex justify-content-end">
+					<button type="submit" class="btn btn-primary" (click)="save()">Registrar datos</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

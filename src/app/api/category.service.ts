@@ -19,7 +19,7 @@ export class CategoryService {
 		return this.httpClient.get(`${this.apiUrl}/category/getall`);
 	}
 
-	public delete(idCategory: string): Observable<any> {
-		return this.httpClient.delete(`${this.apiUrl}/category/delete/${idCategory}`);
+	public delete(idcategory: string): Observable<any> {
+		return this.httpClient.delete(`${this.apiUrl}/category/delete/${idcategory}`);
 	}
 }

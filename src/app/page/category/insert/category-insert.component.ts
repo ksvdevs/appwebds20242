@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { CategoryService } from '../../../api/category.service';
+import { NotifyComponent } from '../../../component/notify/notify.component';
+
 
 @Component({
   selector: 'app-category-insert',
@@ -9,7 +11,8 @@ import { CategoryService } from '../../../api/category.service';
   imports: [
 		CommonModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		NotifyComponent
 	],
   templateUrl: './category-insert.component.html',
   styleUrl: './category-insert.component.css'
@@ -20,6 +23,9 @@ export class CategoryInsertComponent {
   get nameFb() { return this.frmCategoryInsert.controls['name']; }
   get descriptionFb() { return this.frmCategoryInsert.controls['description']; }
   get stateFb() { return this.frmCategoryInsert.controls['state']; }
+
+  typeResponse: string = '';
+	listMessageResponse: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,6 +54,14 @@ export class CategoryInsertComponent {
 
     this.categoryService.insert(formData).subscribe({
       next: (response: any) => {
+        this.typeResponse = response.mo.type;
+				this.listMessageResponse = response.mo.listMessage;
+        switch(response.mo.type) {
+					case 'success':
+						this.frmCategoryInsert.reset();
+
+						break;
+				}
         console.log(response);
       },
       error: (error: any) => {
