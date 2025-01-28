@@ -23,6 +23,7 @@ export class UserInsertComponent {
   listMessageResponse: string[] = [];
 
   get nameUserFb() { return this.frmUserLogin.controls['nameUser']; }
+  get emailFb() { return this.frmUserLogin.controls['email']; }
   get passwordFb() { return this.frmUserLogin.controls['password']; }
   get passwordRetypeFb() { return this.frmUserLogin.controls['passwordRetype']; }
 
@@ -33,6 +34,7 @@ export class UserInsertComponent {
   ) {
     this.frmUserLogin = this.formBuilder.group({
       nameUser: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', []],
       passwordRetype: ['', []],
     });
@@ -56,6 +58,7 @@ export class UserInsertComponent {
     let formData = new FormData();
 
     formData.append('nameUser', this.nameUserFb.value);
+    formData.append('email', this.emailFb.value);
     formData.append('password', this.passwordFb.value);
 
     this.userService.insert(formData).subscribe({

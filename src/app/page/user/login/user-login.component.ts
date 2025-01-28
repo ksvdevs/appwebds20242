@@ -20,7 +20,7 @@ export class UserLoginComponent {
   typeResponse: string = '';
   listMessageResponse: string[] = [];
 
-  get nameUserFb() { return this.frmUserLogin.controls['nameUser']; }
+  get emailFb() { return this.frmUserLogin.controls['email']; }
   get passwordFb() { return this.frmUserLogin.controls['password']; }
 
   constructor(
@@ -29,7 +29,7 @@ export class UserLoginComponent {
     private router: Router
   ) {
     this.frmUserLogin = this.formBuilder.group({
-      nameUser: ['', []],
+      email: ['', []],
       password: ['', []]
     });
   }
@@ -38,7 +38,7 @@ export class UserLoginComponent {
   public login(): void {
     let formData = new FormData();
 
-    formData.append('nameUser', this.nameUserFb.value);
+    formData.append('email', this.emailFb.value);
     formData.append('password', this.passwordFb.value);
 
     this.userService.login(formData).subscribe({
@@ -50,6 +50,7 @@ export class UserLoginComponent {
           case 'success':
             localStorage.setItem('sessionIdUser', response.dto.user.idUser);
             localStorage.setItem('sessionNameUser', response.dto.user.nameUser);
+            localStorage.setItem('sessionEmail', response.dto.user.email);
 
             this.router.navigate(['/user/getall']);
 

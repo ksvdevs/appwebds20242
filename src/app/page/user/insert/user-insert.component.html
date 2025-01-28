@@ -16,6 +16,15 @@
                         class="divError">Formato incorrecto.</div>
                 </div>
                 <div class="col-md-3 mb-3">
+                    <label for="email" class="form-label">email</label>
+                    <input type="text" formControlName="email" class="form-control" id="email"
+                        placeholder="Obligatorio">
+                    <div *ngIf="(emailFb.touched || emailFb.dirty) && emailFb.errors && emailFb.hasError('required')"
+                        class="divError">Este campo es requerido.</div>
+                    <div *ngIf="(emailFb.touched || emailFb.dirty) && emailFb.errors && emailFb.hasError('pattern')"
+                        class="divError">Formato incorrecto.</div>
+                </div>
+                <div class="col-md-3 mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" formControlName="password" class="form-control" id="password"
                         placeholder="Obligatorio">
