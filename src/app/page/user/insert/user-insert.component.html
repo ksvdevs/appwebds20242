@@ -7,7 +7,7 @@
         <form [formGroup]="frmUserLogin">
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <label for="nameUser" class="form-label">nameUser</label>
+                    <label for="nameUser" class="form-label">Nombre de Usuario</label>
                     <input type="text" formControlName="nameUser" class="form-control" id="nameUser"
                         placeholder="Obligatorio">
                     <div *ngIf="(nameUserFb.touched || nameUserFb.dirty) && nameUserFb.errors && nameUserFb.hasError('required')"

@@ -22,4 +22,8 @@ export class CategoryService {
 	public delete(idcategory: string): Observable<any> {
 		return this.httpClient.delete(`${this.apiUrl}/category/delete/${idcategory}`);
 	}
+
+	public update(formData: FormData): Observable<any> {
+		return this.httpClient.put(`${this.apiUrl}/category/update`, formData);
+	}
 }
